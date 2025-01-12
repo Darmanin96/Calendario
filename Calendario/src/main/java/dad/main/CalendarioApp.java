@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class CalendarioApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Calendario.fxml"));
         Scene scene = new Scene(loader.load());
         primaryStage.setTitle("Calendario");
         primaryStage.setScene(scene);

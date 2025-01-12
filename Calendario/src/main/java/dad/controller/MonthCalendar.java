@@ -26,7 +26,6 @@ public class MonthCalendar extends GridPane {
     }
 
     private void updateCalendar() {
-        // Limpiar el calendario actual
         getChildren().clear();
 
         // Obtener el año y el mes actuales
@@ -39,9 +38,9 @@ public class MonthCalendar extends GridPane {
         add(monthName, 0, 0, 7, 1); // Combinar 7 columnas
 
         // Agregar los nombres de los días de la semana
-        DayOfWeek[] daysOfWeek = DayOfWeek.values();
+        String[] daysOfWeek = {"L", "M", "X", "J", "V", "S", "D"};
         for (int i = 0; i < daysOfWeek.length; i++) {
-            Label dayLabel = new Label(daysOfWeek[i].toString().substring(0, 1)); // Primera letra del día
+            Label dayLabel = new Label(daysOfWeek[i]);
             dayLabel.setStyle("-fx-font-weight: bold;");
             add(dayLabel, i, 1);
         }
@@ -52,13 +51,14 @@ public class MonthCalendar extends GridPane {
         int daysInMonth = yearMonth.lengthOfMonth();
 
         // Determinar el día de la semana del primer día del mes
-        int startDay = firstDayOfMonth.getDayOfWeek().getValue() % 7; // Lunes = 0, ..., Domingo = 6
+        int startDay = (firstDayOfMonth.getDayOfWeek().getValue() % 7); // Lunes = 0, ..., Domingo = 6
 
         // Añadir los días del mes al calendario
         int row = 2; // Comienza después de los días de la semana
         int col = startDay;
         for (int day = 1; day <= daysInMonth; day++) {
             Label dayLabel = new Label(String.valueOf(day));
+            dayLabel.setStyle("-fx-font-size: 12px;");
             add(dayLabel, col, row);
 
             col++;
